@@ -1,5 +1,11 @@
 import * as S from "./styles";
 
 export const Checkout = () => {
-  return <S.Container>Checkout</S.Container>;
+  return (
+    <S.Container>
+      <S.PaymentForm></S.PaymentForm>
+
+      <S.CartSummary></S.CartSummary>
+    </S.Container>
+  );
 };

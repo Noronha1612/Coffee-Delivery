@@ -6,37 +6,49 @@ import { ShoppingCartSimple, MapPin } from "phosphor-react";
 import LogoSVG from "../../../assets/logo.svg";
 import { useCart } from "@/hooks/context/cart/useCart";
 import { RouteName } from "@/routes";
+import { useLocation } from "@/hooks/utility/useLocation";
+import { Suspense } from "react";
 
 export const ContentWrapper = () => {
   const { cart } = useCart();
+  const { city, state } = useLocation();
 
   const itemsAddedAmount = cart?.items.length;
 
   return (
-    <S.Container>
-      <header>
-        <Link to={RouteName.HOME}>
-          <img src={LogoSVG} alt="Logo Coffee Delivery" />
-        </Link>
+    <Suspense>
+      <S.Container>
+        <header>
+          <Link to={RouteName.HOME}>
+            <img src={LogoSVG} alt="Logo Coffee Delivery" />
+          </Link>
 
-        <S.HeaderInteractables>
-          <S.InteractableCard variant="secondary">
-            <MapPin weight="fill" size={20} /> <span>Porto Alegre, RS</span>
-          </S.InteractableCard>
-          <S.InteractableCard
-            variant="primary"
-            tagContent={
-              !!itemsAddedAmount ? itemsAddedAmount.toString() : undefined
-            }
-          >
-            <ShoppingCartSimple weight="fill" size={20} />
-          </S.InteractableCard>
-        </S.HeaderInteractables>
-      </header>
+          <S.HeaderInteractables>
+            {city && state && (
+              <S.InteractableCard variant="secondary">
+                <MapPin weight="fill" size={20} />{" "}
+                <span>
+                  {city}, {state}
+                </span>
+              </S.InteractableCard>
+            )}
+            <Link to={RouteName.CHECKOUT}>
+              <S.InteractableCard
+                variant="primary"
+                tagContent={
+                  !!itemsAddedAmount ? itemsAddedAmount.toString() : undefined
+                }
+              >
+                <ShoppingCartSimple weight="fill" size={20} />
+              </S.InteractableCard>
+            </Link>
+          </S.HeaderInteractables>
+        </header>
 
-      <div className="content">
-        <Outlet />
-      </div>
-    </S.Container>
+        <div className="content">
+          <Outlet />
+        </div>
+      </S.Container>
+    </Suspense>
   );
 };

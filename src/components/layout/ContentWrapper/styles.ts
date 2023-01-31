@@ -8,7 +8,7 @@ export const Container = styled.div`
   overflow-x: hidden;
 
   & > .content {
-    margin-top: 6.5rem;
+    margin-top: 7rem;
   }
 
   header {

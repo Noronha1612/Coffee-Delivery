@@ -16,13 +16,14 @@ export enum RouteName {
   SUCCESS = "success",
 }
 
-export const routes = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path={RouteName.ROOT} element={<ContentWrapper />}>
-      <Route path={RouteName.HOME} element={<Home />} />
-      <Route path={RouteName.CHECKOUT} element={<Checkout />} />
-      <Route path={RouteName.SUCCESS} element={<Success />} />
-      <Route path="*" element={<NotFound />} />
-    </Route>
-  )
-);
+export const routes = createBrowserRouter([
+  {
+    path: RouteName.ROOT,
+    element: <ContentWrapper />,
+    children: [
+      { path: RouteName.HOME, element: <Home /> },
+      { path: RouteName.CHECKOUT, element: <Checkout /> },
+      { path: RouteName.SUCCESS, element: <Success /> },
+    ],
+  },
+]);
