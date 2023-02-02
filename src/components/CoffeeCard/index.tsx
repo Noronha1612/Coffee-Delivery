@@ -6,6 +6,8 @@ import { Coffee, CoffeeTag } from "@/models/Coffee";
 
 import * as S from "./styles";
 import { useCart } from "@/hooks/context/cart/useCart";
+import { NumberInput } from "../Form/NumberInput";
+import { getCoffeeImageUrl } from "@/utils/getCoffeeImageUrl";
 
 type CoffeeCardProps = {
   coffee: Coffee;
@@ -25,20 +27,6 @@ export const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee }) => {
 
   const [quantity, setQuantity] = useState(1);
 
-  const strictPositiveNumber = (value: number) => {
-    return value < 1 ? 1 : value;
-  };
-  const incrementQuantity = () => {
-    setQuantity((previous) => strictPositiveNumber(previous + 1));
-  };
-  const decrementQuantity = () =>
-    setQuantity((previous) => strictPositiveNumber(previous - 1));
-
-  const CoffeeImage = new URL(
-    `../../assets/coffeeImages/${coffee.imageName}`,
-    import.meta.url
-  ).href;
-
   const handleAddToCart = () => {
     addItem({
       quantity,
@@ -48,7 +36,7 @@ export const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee }) => {
 
   return (
     <S.CardContainer>
-      <img src={CoffeeImage} alt="Imagem do café exibido" />
+      <img src={getCoffeeImageUrl(coffee)} alt="Imagem do café exibido" />
 
       <S.TagWrapper>
         {coffee.tags.map((tag) => (
@@ -64,15 +52,7 @@ export const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee }) => {
           {coffee.price.toFixed(2).replace(".", ",")}
         </span>
 
-        <S.QuantitySelector>
-          <button onClick={decrementQuantity}>
-            <Minus size={14} />
-          </button>
-          <span>{quantity}</span>
-          <button onClick={incrementQuantity}>
-            <Plus size={14} />
-          </button>
-        </S.QuantitySelector>
+        <NumberInput initialValue={quantity} onChange={setQuantity} />
 
         <button type="submit" onClick={handleAddToCart}>
           <ShoppingCart weight="fill" color={theme.white} size={22} />

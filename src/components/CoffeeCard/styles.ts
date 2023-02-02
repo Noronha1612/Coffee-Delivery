@@ -83,43 +83,6 @@ export const CardContainer = styled.div`
   }
 `;
 
-export const QuantitySelector = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.25rem;
-
-  border-radius: 6px;
-
-  background: ${({ theme }) => theme.baseButton};
-
-  span {
-    font-size: 1rem;
-    color: ${({ theme }) => theme.baseTitle};
-  }
-
-  button {
-    background: transparent;
-    border: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 0.5rem;
-
-    svg {
-      color: ${({ theme }) => theme.secondary};
-
-      transition: color 0.1s;
-
-      &:hover {
-        color: ${({ theme }) => theme.secondaryDark};
-      }
-    }
-  }
-`;
-
 export const TagWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;

@@ -26,6 +26,7 @@ export const getAddressName = (
 ) => {
   let address: LocationItem = { address_components: [] };
 
+  // Get the address that has the most quantity of information available due to how the Google api responses
   location.forEach((location) => {
     if (
       location.address_components.length > address.address_components.length

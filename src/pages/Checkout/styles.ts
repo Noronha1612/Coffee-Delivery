@@ -1,7 +1,195 @@
+import { InteractableBaseComponent } from "@/styles/common";
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+`;
 
-export const PaymentForm = styled.form``;
+const ContainerSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
-export const CartSummary = styled.div``;
+  h2 {
+    font-family: "Baloo 2";
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 130%;
+  }
+
+  section {
+    border-radius: 6px;
+    background-color: ${({ theme }) => theme.baseCard};
+    padding: 2.5rem;
+
+    &:not(:last-child) {
+      margin-bottom: 0.75rem;
+    }
+  }
+`;
+
+export const PaymentFormContainer = styled(ContainerSection)`
+  display: flex;
+  flex: 1;
+
+  form .inputBox {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    grid-template-areas:
+      "cep cep empty empty empty empty empty "
+      "street street street street street street street "
+      "number number complement complement complement complement  complement"
+      "district district city city city city uf";
+
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+
+    #cep-container {
+      grid-area: cep;
+    }
+    #street-container {
+      grid-area: street;
+    }
+    #houseNumber-container {
+      grid-area: number;
+    }
+    #complementaryInfo-container {
+      grid-area: complement;
+    }
+    #district-container {
+      grid-area: district;
+    }
+    #city-container {
+      grid-area: city;
+    }
+    #state-container {
+      grid-area: uf;
+    }
+  }
+`;
+
+export const CartSummary = styled(ContainerSection)`
+  min-width: 448px;
+
+  & > section {
+    border-top-right-radius: 44px;
+    border-bottom-left-radius: 44px;
+  }
+`;
+
+export const SummaryCard = styled.div`
+  display: flex;
+  gap: 1.25rem;
+
+  position: relative;
+
+  padding: 1.5rem 0;
+
+  border-bottom: 1px solid ${({ theme }) => theme.baseButton};
+
+  & > img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  & > .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & > .interactablesWrapper {
+      width: fit-content;
+      display: flex;
+      gap: 0.75rem;
+    }
+  }
+
+  & > .price {
+    margin-left: auto;
+
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 130%;
+
+    display: flex;
+    align-items: center;
+    text-align: right;
+
+    color: ${({ theme }) => theme.baseText};
+  }
+`;
+
+export const DeleteButton = styled(InteractableBaseComponent)`
+  padding: 0.5rem;
+
+  transition: background 0.3s;
+
+  & > span {
+    display: block;
+
+    font-size: 0.75rem;
+    line-height: 100%;
+    text-transform: uppercase;
+
+    color: ${({ theme }) => theme.baseText};
+  }
+
+  &:hover {
+    background: ${({ theme }) => theme.baseHover};
+  }
+`;
+
+export const SummaryDataDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+
+  & > .data-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      font-size: 1rem;
+      color: ${({ theme }) => theme.baseText};
+    }
+
+    &:last-child {
+      span {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+    }
+  }
+`;
+
+export const ConfirmButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 8px;
+
+  width: 100%;
+
+  background: ${({ theme }) => theme.primary};
+  border: none;
+  border-radius: 6px;
+
+  color: ${({ theme }) => theme.white};
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 160%;
+
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: ${({ theme }) => theme.primaryDark};
+  }
+`;

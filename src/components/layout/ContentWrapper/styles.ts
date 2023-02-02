@@ -11,7 +11,7 @@ export const Container = styled.div`
     margin-top: 7rem;
   }
 
-  header {
+  & > header {
     position: fixed;
     display: flex;
     justify-content: space-between;
@@ -64,6 +64,7 @@ const InteractableCardTag = (content: string) => css`
 
 export const InteractableCard = styled.span<InteractableCardProps>`
   position: relative;
+  height: 100%;
 
   color: ${({ theme, variant }) => theme[variant]};
   background-color: ${({ theme, variant }) => theme[`${variant}Light`]};

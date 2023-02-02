@@ -10,10 +10,10 @@ import { useLocation } from "@/hooks/utility/useLocation";
 import { Suspense } from "react";
 
 export const ContentWrapper = () => {
-  const { cart } = useCart();
+  const { items } = useCart();
   const { city, state } = useLocation();
 
-  const itemsAddedAmount = cart?.items.length;
+  const itemsAddedAmount = items.length;
 
   return (
     <Suspense>
