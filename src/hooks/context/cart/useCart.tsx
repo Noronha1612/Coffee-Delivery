@@ -3,7 +3,11 @@ import {
   useLocalStorage,
 } from "@/hooks/utility/useLocalStorage";
 import React, { createContext, useContext, useEffect, useReducer } from "react";
-import { addItemToCart, updateItemQuantity } from "./actions";
+import {
+  addItemToCart,
+  removeItemFromCart,
+  updateItemQuantity,
+} from "./actions";
 import { cartReducer } from "./reducer";
 import { Cart, CartItem } from "./types";
 
@@ -13,6 +17,7 @@ type CartContextProps = {
   delivaryTax: number;
 
   addItem(item: CartItem): void;
+  removeItem(itemId: number): void;
   updateQuantity(itemId: number, newQuantity: number): void;
 };
 
@@ -49,6 +54,10 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
     );
   };
 
+  const removeItem = (itemId: number) => {
+    dispatch(removeItemFromCart(itemId));
+  };
+
   const insertItemToCart = (itemInserted: CartItem) => {
     const existingItem = cart.items.find(
       (item) => item.coffee.id === itemInserted.coffee.id
@@ -71,6 +80,7 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
       value={{
         items: cart.items,
         addItem: insertItemToCart,
+        removeItem,
         totalValue,
         updateQuantity,
         delivaryTax: DELIVERY_TAX_VALUE,

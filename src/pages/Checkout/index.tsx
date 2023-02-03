@@ -5,13 +5,13 @@ import { getCoffeeImageUrl } from "@/utils/getCoffeeImageUrl";
 import { Trash } from "phosphor-react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useTheme } from "styled-components";
+import { CartSummary } from "./components/CartSummary";
 import { CheckoutForm } from "./components/Form";
 import * as S from "./styles";
 
 export const Checkout = () => {
   const colors = useTheme();
 
-  const { items, delivaryTax, totalValue, updateQuantity } = useCart();
   const { control, handleSubmit } = useForm<FieldValues>({
     mode: "onBlur",
     defaultValues: {
@@ -40,49 +40,7 @@ export const Checkout = () => {
       <S.CartSummary>
         <h2>Cafés selecionados</h2>
 
-        <section>
-          {items.map((item) => (
-            <S.SummaryCard key={item.coffee.id}>
-              <img
-                src={getCoffeeImageUrl(item.coffee)}
-                alt={item.coffee.name}
-              />
-
-              <div className="card-content">
-                <h4>{item.coffee.name}</h4>
-                <div className="interactablesWrapper">
-                  <NumberInput
-                    initialValue={item.quantity}
-                    onChange={(value) => updateQuantity(item.coffee.id, value)}
-                  />
-                  <S.DeleteButton>
-                    <Trash size={16} color={colors.secondary} />
-                    <span>Remover</span>
-                  </S.DeleteButton>
-                </div>
-              </div>
-
-              <span className="price">{formatCurrency(item.coffee.price)}</span>
-            </S.SummaryCard>
-          ))}
-
-          <S.SummaryDataDetails>
-            <div className="data-item">
-              <span>Total de items</span>
-              <span>{formatCurrency(totalValue - delivaryTax)}</span>
-            </div>
-            <div className="data-item">
-              <span>Entrega</span>
-              <span>{formatCurrency(delivaryTax)}</span>
-            </div>
-            <div className="data-item">
-              <span>Total</span>
-              <span>{formatCurrency(totalValue)}</span>
-            </div>
-          </S.SummaryDataDetails>
-
-          <S.ConfirmButton>Confirmar pedido</S.ConfirmButton>
-        </section>
+        <CartSummary />
       </S.CartSummary>
     </S.Container>
   );
