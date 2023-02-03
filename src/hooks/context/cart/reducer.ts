@@ -3,6 +3,7 @@ import {
   Cart,
   CartActions,
   CartItem,
+  RemoveItemPayload,
   UpdateItemQuantityPayload,
 } from "./types";
 
@@ -18,6 +19,15 @@ export const cartReducer: Reducer<Cart, ReducerAction<CartActions>> = (
         ...state,
         items: [...state.items, itemToBeInserted],
       };
+
+    case CartActions.REMOVE_ITEM:
+      const { itemId: removedItemId } = action.payload as RemoveItemPayload;
+
+      return {
+        ...state,
+        items: state.items.filter((item) => item.coffee.id !== removedItemId),
+      };
+
     case CartActions.UPDATE_ITEM_QUANTITY:
       const { quantity, itemId } = action.payload as UpdateItemQuantityPayload;
 
@@ -32,6 +42,7 @@ export const cartReducer: Reducer<Cart, ReducerAction<CartActions>> = (
           };
         }),
       };
+
     default:
       return state;
   }

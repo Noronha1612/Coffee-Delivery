@@ -1,4 +1,4 @@
-declare type ReducerAction<Actions> = {
+declare type ReducerAction<Actions, Payload = Record<string, unknown>> = {
   type: Actions;
-  payload: Record<string, unknown>;
+  payload: Payload;
 };
