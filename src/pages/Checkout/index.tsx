@@ -11,7 +11,7 @@ import * as S from "./styles";
 export const Checkout = () => {
   const colors = useTheme();
 
-  const { items, delivaryTax, totalValue } = useCart();
+  const { items, delivaryTax, totalValue, updateQuantity } = useCart();
   const { control, handleSubmit } = useForm<FieldValues>({
     mode: "onBlur",
     defaultValues: {
@@ -51,7 +51,10 @@ export const Checkout = () => {
               <div className="card-content">
                 <h4>{item.coffee.name}</h4>
                 <div className="interactablesWrapper">
-                  <NumberInput initialValue={item.quantity} />
+                  <NumberInput
+                    initialValue={item.quantity}
+                    onChange={(value) => updateQuantity(item.coffee.id, value)}
+                  />
                   <S.DeleteButton>
                     <Trash size={16} color={colors.secondary} />
                     <span>Remover</span>

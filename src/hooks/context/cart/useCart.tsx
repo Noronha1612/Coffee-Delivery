@@ -3,7 +3,7 @@ import {
   useLocalStorage,
 } from "@/hooks/utility/useLocalStorage";
 import React, { createContext, useContext, useEffect, useReducer } from "react";
-import { addItemToCart } from "./actions";
+import { addItemToCart, updateItemQuantity } from "./actions";
 import { cartReducer } from "./reducer";
 import { Cart, CartItem } from "./types";
 
@@ -13,6 +13,7 @@ type CartContextProps = {
   delivaryTax: number;
 
   addItem(item: CartItem): void;
+  updateQuantity(itemId: number, newQuantity: number): void;
 };
 
 type CartContextProviderProps = {
@@ -39,8 +40,30 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
     setStoreData(cart);
   }, [cart]);
 
-  const insertItemToCart = (item: CartItem) => {
-    dispatch(addItemToCart(item));
+  const updateQuantity = (itemId: number, newQuantity: number) => {
+    dispatch(
+      updateItemQuantity({
+        itemId,
+        quantity: newQuantity,
+      })
+    );
+  };
+
+  const insertItemToCart = (itemInserted: CartItem) => {
+    const existingItem = cart.items.find(
+      (item) => item.coffee.id === itemInserted.coffee.id
+    );
+
+    if (existingItem) {
+      return dispatch(
+        updateItemQuantity({
+          itemId: itemInserted.coffee.id,
+          quantity: existingItem.quantity + itemInserted.quantity,
+        })
+      );
+    }
+
+    dispatch(addItemToCart(itemInserted));
   };
 
   return (
@@ -49,6 +72,7 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
         items: cart.items,
         addItem: insertItemToCart,
         totalValue,
+        updateQuantity,
         delivaryTax: DELIVERY_TAX_VALUE,
       }}
     >

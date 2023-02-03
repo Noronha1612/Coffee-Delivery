@@ -1,5 +1,10 @@
 import { Reducer } from "react";
-import { Cart, CartActions, CartItem } from "./types";
+import {
+  Cart,
+  CartActions,
+  CartItem,
+  UpdateItemQuantityPayload,
+} from "./types";
 
 export const cartReducer: Reducer<Cart, ReducerAction<CartActions>> = (
   state,
@@ -7,9 +12,25 @@ export const cartReducer: Reducer<Cart, ReducerAction<CartActions>> = (
 ) => {
   switch (action.type) {
     case CartActions.ADD_ITEM:
+      const itemToBeInserted = action.payload.item as CartItem;
+
       return {
         ...state,
-        items: [...state.items, action.payload.item as CartItem],
+        items: [...state.items, itemToBeInserted],
+      };
+    case CartActions.UPDATE_ITEM_QUANTITY:
+      const { quantity, itemId } = action.payload as UpdateItemQuantityPayload;
+
+      return {
+        ...state,
+        items: state.items.map((item) => {
+          if (item.coffee.id !== itemId) return item;
+
+          return {
+            ...item,
+            quantity,
+          };
+        }),
       };
     default:
       return state;

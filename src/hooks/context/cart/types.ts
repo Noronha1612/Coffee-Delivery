@@ -11,4 +11,10 @@ export type Cart = {
 
 export enum CartActions {
   ADD_ITEM = "add-item",
+  UPDATE_ITEM_QUANTITY = "update-item-quantity",
 }
+
+export type UpdateItemQuantityPayload = {
+  quantity: number;
+  itemId: number;
+};
