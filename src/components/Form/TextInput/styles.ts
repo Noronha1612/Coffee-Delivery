@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-type InputWrapperProps = { optionalLabel: boolean };
+type InputWrapperProps = { optionalLabel?: boolean; hasError?: boolean };
 
 const OptionalLabelCss = css`
   &:after {
@@ -17,6 +17,10 @@ const OptionalLabelCss = css`
   }
 `;
 
+const hasErrorCss = css`
+  border: 1px solid ${({ theme }) => theme.danger};
+`;
+
 export const InputWrapper = styled.label<InputWrapperProps>`
   display: block;
   position: relative;
@@ -29,6 +33,7 @@ export const InputWrapper = styled.label<InputWrapperProps>`
   cursor: text;
 
   ${({ optionalLabel }) => optionalLabel && OptionalLabelCss}
+  ${({ hasError }) => hasError && hasErrorCss}
 
   &:has(input:active),
   &:has(input:focus) {
@@ -39,6 +44,7 @@ export const InputWrapper = styled.label<InputWrapperProps>`
 export const Input = styled.input`
   font-size: 0.875rem;
   color: ${({ theme }) => theme.baseText};
+  width: 100%;
 
   background: transparent;
   border: 0;

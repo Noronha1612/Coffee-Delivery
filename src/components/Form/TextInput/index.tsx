@@ -1,5 +1,5 @@
-import { HTMLAttributes, useRef } from "react";
-import { Control, useController, useWatch } from "react-hook-form";
+import { InputHTMLAttributes } from "react";
+import { Control, useController } from "react-hook-form";
 import * as S from "./styles";
 
 type TextInputProps = {
@@ -7,15 +7,18 @@ type TextInputProps = {
   control: Control<any>;
   hasError?: boolean;
   optionalLabel?: boolean;
-} & Omit<HTMLAttributes<HTMLInputElement>, "id">;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, "id">;
 
-export function TextInput<ControlType extends Control<any>>({
+export function TextInput({
   id,
   control,
   optionalLabel = false,
   ...props
 }: TextInputProps) {
-  const { field } = useController({
+  const {
+    field,
+    fieldState: { error },
+  } = useController({
     name: id,
     control,
   });
@@ -25,6 +28,7 @@ export function TextInput<ControlType extends Control<any>>({
       htmlFor={id}
       optionalLabel={!field.value && optionalLabel}
       id={`${id}-container`}
+      hasError={!!error}
     >
       <S.Input {...props} {...field} id={id} />
     </S.InputWrapper>

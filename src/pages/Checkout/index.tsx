@@ -1,29 +1,24 @@
-import { useCart } from "@/hooks/context/cart/useCart";
-import { Payment, PaymentLabel } from "@/models/Payment";
-import { RouteName } from "@/routes";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import { useCart } from "@/hooks/context/cart/useCart";
+import { PaymentLabel } from "@/models/Payment";
+import { RouteName } from "@/routes";
+
 import { CartSummary } from "./components/CartSummary";
 import { CheckoutForm } from "./components/Form";
-import * as S from "./styles";
+import { FormData, formSchema } from "./formUtils";
 
-type FormData = {
-  cep: string;
-  street: string;
-  houseNumber: string;
-  complementaryInfo: string;
-  district: string;
-  city: string;
-  state: string;
-  payment: Payment;
-};
+import * as S from "./styles";
 
 export const Checkout = () => {
   const navigate = useNavigate();
   const { clearCart } = useCart();
 
   const { control, handleSubmit } = useForm<FormData>({
-    mode: "onBlur",
+    mode: "onSubmit",
+    resolver: yupResolver(formSchema),
     defaultValues: {
       cep: "",
       street: "",
@@ -40,7 +35,9 @@ export const Checkout = () => {
 
     navigate(RouteName.SUCCESS, {
       state: {
-        address: `${data.street},${data.houseNumber} | ${data.district} - ${data.city}, ${data.state}`,
+        address: `${data.street},${data.houseNumber} | ${data.district} - ${
+          data.city
+        }, ${data.state.toUpperCase()}`,
         payment: PaymentLabel[data.payment],
       },
     });

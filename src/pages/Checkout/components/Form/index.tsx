@@ -9,8 +9,9 @@ import {
   Money,
 } from "phosphor-react";
 import React from "react";
-import { Control } from "react-hook-form";
+import { Control, FieldError } from "react-hook-form";
 import { useTheme } from "styled-components";
+import { FormData } from "../../formUtils";
 
 import * as S from "./styles";
 
@@ -34,7 +35,12 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({ control }) => {
         </S.SectionHeader>
 
         <div className="inputBox">
-          <TextInput id="cep" control={control} placeholder="CEP" />
+          <TextInput
+            id="cep"
+            control={control}
+            placeholder="CEP"
+            maxLength={8}
+          />
           <TextInput id="street" control={control} placeholder="Rua" />
           <TextInput id="houseNumber" control={control} placeholder="Número" />
           <TextInput

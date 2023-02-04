@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+export const ErrorMessage = styled.span`
+  display: block;
+  margin-bottom: 1rem;
+  color: ${({ theme }) => theme.danger};
+
+  font-size: 0.75rem;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
