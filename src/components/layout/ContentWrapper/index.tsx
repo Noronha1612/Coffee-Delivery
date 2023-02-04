@@ -19,7 +19,7 @@ export const ContentWrapper = () => {
     <Suspense>
       <S.Container>
         <header>
-          <Link to={RouteName.HOME}>
+          <Link to={RouteName.ROOT}>
             <img src={LogoSVG} alt="Logo Coffee Delivery" />
           </Link>
 
