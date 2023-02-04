@@ -57,7 +57,7 @@ export const CartSummary: React.FC<CartSummaryProps> = ({ onConfirm }) => {
         </div>
       </S.SummaryDataDetails>
 
-      <S.ConfirmButton>Confirmar pedido</S.ConfirmButton>
+      <S.ConfirmButton onClick={onConfirm}>Confirmar pedido</S.ConfirmButton>
     </section>
   );
 };

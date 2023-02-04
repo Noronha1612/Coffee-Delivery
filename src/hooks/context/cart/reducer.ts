@@ -13,7 +13,7 @@ export const cartReducer: Reducer<Cart, ReducerAction<CartActions>> = (
 ) => {
   switch (action.type) {
     case CartActions.ADD_ITEM:
-      const itemToBeInserted = action.payload.item as CartItem;
+      const itemToBeInserted = action.payload?.item as CartItem;
 
       return {
         ...state,
@@ -41,6 +41,12 @@ export const cartReducer: Reducer<Cart, ReducerAction<CartActions>> = (
             quantity,
           };
         }),
+      };
+
+    case CartActions.CLEAR_CART:
+      return {
+        ...state,
+        items: [],
       };
 
     default:

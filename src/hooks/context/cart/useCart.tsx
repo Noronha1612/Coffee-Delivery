@@ -5,6 +5,7 @@ import {
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 import {
   addItemToCart,
+  clearCartItems,
   removeItemFromCart,
   updateItemQuantity,
 } from "./actions";
@@ -19,6 +20,7 @@ type CartContextProps = {
   addItem(item: CartItem): void;
   removeItem(itemId: number): void;
   updateQuantity(itemId: number, newQuantity: number): void;
+  clearCart(): void;
 };
 
 type CartContextProviderProps = {
@@ -75,6 +77,10 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
     dispatch(addItemToCart(itemInserted));
   };
 
+  const clearCart = () => {
+    dispatch(clearCartItems());
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -84,6 +90,7 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
         totalValue,
         updateQuantity,
         delivaryTax: DELIVERY_TAX_VALUE,
+        clearCart,
       }}
     >
       {children}

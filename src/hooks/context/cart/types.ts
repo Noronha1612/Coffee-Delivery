@@ -13,6 +13,7 @@ export enum CartActions {
   ADD_ITEM = "add-item",
   REMOVE_ITEM = "remove-item",
   UPDATE_ITEM_QUANTITY = "update-item-quantity",
+  CLEAR_CART = "clear-cart",
 }
 
 export type RemoveItemPayload = {

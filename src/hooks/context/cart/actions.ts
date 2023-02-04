@@ -18,3 +18,6 @@ export const updateItemQuantity = (
   payload: UpdateItemQuantityPayload
 ): ReducerAction<CartActions, UpdateItemQuantityPayload> =>
   action(CartActions.UPDATE_ITEM_QUANTITY, payload);
+
+export const clearCartItems = (): ReducerAction<CartActions> =>
+  action(CartActions.CLEAR_CART);

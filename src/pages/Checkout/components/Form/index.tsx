@@ -1,5 +1,6 @@
 import { RadioGroup } from "@/components/Form/RadioGroup";
 import { TextInput } from "@/components/Form/TextInput";
+import { Payment, PaymentLabel } from "@/models/Payment";
 import {
   Bank,
   CreditCard,
@@ -8,13 +9,13 @@ import {
   Money,
 } from "phosphor-react";
 import React from "react";
-import { Control, FieldValues } from "react-hook-form";
+import { Control } from "react-hook-form";
 import { useTheme } from "styled-components";
 
 import * as S from "./styles";
 
 type CheckoutFormProps = {
-  control: Control<FieldValues>;
+  control: Control<any>;
 };
 
 export const CheckoutForm: React.FC<CheckoutFormProps> = ({ control }) => {
@@ -65,18 +66,18 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({ control }) => {
             control={control}
             options={[
               {
-                label: "Cartão de crédito",
-                value: "credit-card",
+                label: PaymentLabel[Payment.CreditCard],
+                value: Payment.CreditCard,
                 icon: <CreditCard size={16} color={colors.secondary} />,
               },
               {
-                label: "Cartão de débito",
-                value: "debit-card",
+                label: PaymentLabel[Payment.DebitCard],
+                value: Payment.DebitCard,
                 icon: <Bank size={16} color={colors.secondary} />,
               },
               {
-                label: "Dinheiro",
-                value: "cash",
+                label: PaymentLabel[Payment.Cash],
+                value: Payment.Cash,
                 icon: <Money size={16} color={colors.secondary} />,
               },
             ]}

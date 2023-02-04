@@ -1,18 +1,28 @@
-import { NumberInput } from "@/components/Form/NumberInput";
 import { useCart } from "@/hooks/context/cart/useCart";
-import { formatCurrency } from "@/utils/format";
-import { getCoffeeImageUrl } from "@/utils/getCoffeeImageUrl";
-import { Trash } from "phosphor-react";
-import { FieldValues, useForm } from "react-hook-form";
-import { useTheme } from "styled-components";
+import { Payment, PaymentLabel } from "@/models/Payment";
+import { RouteName } from "@/routes";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { CartSummary } from "./components/CartSummary";
 import { CheckoutForm } from "./components/Form";
 import * as S from "./styles";
 
-export const Checkout = () => {
-  const colors = useTheme();
+type FormData = {
+  cep: string;
+  street: string;
+  houseNumber: string;
+  complementaryInfo: string;
+  district: string;
+  city: string;
+  state: string;
+  payment: Payment;
+};
 
-  const { control, handleSubmit } = useForm<FieldValues>({
+export const Checkout = () => {
+  const navigate = useNavigate();
+  const { clearCart } = useCart();
+
+  const { control, handleSubmit } = useForm<FormData>({
     mode: "onBlur",
     defaultValues: {
       cep: "",
@@ -25,8 +35,15 @@ export const Checkout = () => {
     },
   });
 
-  const handleConfirm = (data: FieldValues) => {
-    console.log(data);
+  const handleConfirm = (data: FormData) => {
+    clearCart();
+
+    navigate(RouteName.SUCCESS, {
+      state: {
+        address: `${data.street},${data.houseNumber} | ${data.district} - ${data.city}, ${data.state}`,
+        payment: PaymentLabel[data.payment],
+      },
+    });
   };
 
   return (
@@ -40,7 +57,7 @@ export const Checkout = () => {
       <S.CartSummary>
         <h2>Cafés selecionados</h2>
 
-        <CartSummary />
+        <CartSummary onConfirm={handleSubmit(handleConfirm)} />
       </S.CartSummary>
     </S.Container>
   );
