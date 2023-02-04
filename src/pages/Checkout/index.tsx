@@ -19,6 +19,7 @@ export const Checkout = () => {
   const { control, handleSubmit } = useForm<FormData>({
     mode: "onSubmit",
     resolver: yupResolver(formSchema),
+    shouldFocusError: false,
     defaultValues: {
       cep: "",
       street: "",

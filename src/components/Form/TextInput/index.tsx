@@ -7,12 +7,16 @@ type TextInputProps = {
   control: Control<any>;
   hasError?: boolean;
   optionalLabel?: boolean;
+  mask?: string;
+  uppercase?: boolean;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, "id">;
 
 export function TextInput({
   id,
   control,
   optionalLabel = false,
+  mask = "",
+  uppercase,
   ...props
 }: TextInputProps) {
   const {
@@ -30,7 +34,14 @@ export function TextInput({
       id={`${id}-container`}
       hasError={!!error}
     >
-      <S.Input {...props} {...field} id={id} />
+      <S.Input
+        {...props}
+        {...field}
+        id={id}
+        mask={mask}
+        alwaysShowMask={false}
+        maskChar=""
+      />
     </S.InputWrapper>
   );
 }

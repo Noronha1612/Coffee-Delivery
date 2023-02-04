@@ -39,10 +39,15 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({ control }) => {
             id="cep"
             control={control}
             placeholder="CEP"
-            maxLength={8}
+            mask="99999-999"
           />
           <TextInput id="street" control={control} placeholder="Rua" />
-          <TextInput id="houseNumber" control={control} placeholder="Número" />
+          <TextInput
+            id="houseNumber"
+            control={control}
+            placeholder="Número"
+            mask="999999"
+          />
           <TextInput
             id="complementaryInfo"
             control={control}
@@ -51,7 +56,13 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({ control }) => {
           />
           <TextInput id="district" control={control} placeholder="Bairro" />
           <TextInput id="city" control={control} placeholder="Cidade" />
-          <TextInput id="state" control={control} placeholder="UF" />
+          <TextInput
+            id="state"
+            control={control}
+            placeholder="UF"
+            uppercase
+            mask="aa"
+          />
         </div>
       </section>
       <section>

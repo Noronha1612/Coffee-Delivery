@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import InputMask from "react-input-mask";
 
 type InputWrapperProps = { optionalLabel?: boolean; hasError?: boolean };
 
@@ -41,7 +42,7 @@ export const InputWrapper = styled.label<InputWrapperProps>`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled(InputMask)`
   font-size: 0.875rem;
   color: ${({ theme }) => theme.baseText};
   width: 100%;
