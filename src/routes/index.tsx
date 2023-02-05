@@ -21,10 +21,10 @@ export const routes = createBrowserRouter(
   createRoutesFromElements(
     <Route path={RouteName.ROOT} element={<ContentWrapper />}>
       <Route path={RouteName.ROOT} element={<Home />} />
+      <Route path={RouteName.SUCCESS} element={<Success />} />
 
       <Route path={RouteName.CART} element={<OutletWithItemsInCart />}>
         <Route path={RouteName.CHECKOUT} element={<Checkout />} />
-        <Route path={RouteName.SUCCESS} element={<Success />} />
       </Route>
     </Route>
   )
