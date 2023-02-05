@@ -3,6 +3,7 @@ import {
   useLocalStorage,
 } from "@/hooks/utility/useLocalStorage";
 import React, { createContext, useContext, useEffect, useReducer } from "react";
+import { toast } from "react-toastify";
 import {
   addItemToCart,
   clearCartItems,
@@ -65,6 +66,7 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
       (item) => item.coffee.id === itemInserted.coffee.id
     );
 
+    toast.success("Café adicionado! ☕");
     if (existingItem) {
       return dispatch(
         updateItemQuantity({

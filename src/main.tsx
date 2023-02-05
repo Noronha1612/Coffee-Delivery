@@ -15,7 +15,12 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={defaultTheme}>
         <App />
-        <ToastContainer position="bottom-left" theme="colored" />
+        <ToastContainer
+          position="bottom-right"
+          theme="colored"
+          limit={3}
+          autoClose={1000}
+        />
       </ThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>
