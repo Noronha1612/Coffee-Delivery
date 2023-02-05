@@ -14,10 +14,11 @@ type CoffeeCardProps = {
 };
 
 const CoffeeTagLabels: Record<CoffeeTag, string> = {
-  STANDART: "Tradicional",
-  ALCOHOLIC: "Alcoólico",
-  COLD: "Gelado",
-  MILKY: "Com leite",
+  [CoffeeTag.Standart]: "Tradicional",
+  [CoffeeTag.Alcoholic]: "Alcoólico",
+  [CoffeeTag.Cold]: "Gelado",
+  [CoffeeTag.Milky]: "Com leite",
+  [CoffeeTag.Special]: "Especial",
 };
 
 export const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee }) => {
