@@ -14,7 +14,6 @@ import * as S from "./styles";
 
 export const Checkout = () => {
   const navigate = useNavigate();
-  const { clearCart } = useCart();
 
   const { control, handleSubmit } = useForm<FormData>({
     mode: "onSubmit",
@@ -32,8 +31,6 @@ export const Checkout = () => {
   });
 
   const handleConfirm = (data: FormData) => {
-    clearCart();
-
     navigate(RouteName.SUCCESS, {
       state: {
         address: `${data.street},${data.houseNumber} | ${data.district} - ${

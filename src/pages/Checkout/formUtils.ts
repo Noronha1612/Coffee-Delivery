@@ -25,6 +25,6 @@ export const formSchema = yup.object({
     .string()
     .required("Selecione uma forma de pagamento")
     .oneOf(Object.values(Payment)),
-  state: yup.string().required().min(3),
-  street: yup.string().required().length(2),
+  street: yup.string().required().min(3),
+  state: yup.string().required().length(2),
 });

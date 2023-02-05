@@ -11,6 +11,8 @@ import { CoffeeCard } from "../../components/CoffeeCard";
 
 import coffees from "@/data/coffees.json";
 import { Coffee } from "@/models/Coffee";
+import { useEffect } from "react";
+import { useCart } from "@/hooks/context/cart/useCart";
 
 const tags = [
   {
@@ -36,6 +38,12 @@ const tags = [
 ] as const;
 
 export const Home = () => {
+  const { clearCart } = useCart();
+
+  useEffect(() => {
+    clearCart();
+  }, []);
+
   return (
     <S.Container>
       <S.Banner>
