@@ -8,7 +8,9 @@ import {
   Timer,
 } from "phosphor-react";
 import { CoffeeCard } from "../../components/CoffeeCard";
-import { useQueryCoffees } from "@/hooks/fetching/useQueryCoffees";
+
+import coffees from "@/data/coffees.json";
+import { Coffee } from "@/models/Coffee";
 
 const tags = [
   {
@@ -34,10 +36,6 @@ const tags = [
 ] as const;
 
 export const Home = () => {
-  const { data: response } = useQueryCoffees();
-
-  const coffees = response?.data ?? [];
-
   return (
     <S.Container>
       <S.Banner>
@@ -69,7 +67,7 @@ export const Home = () => {
 
         <div className="cardsWrapper">
           {coffees.map((coffee) => (
-            <CoffeeCard key={coffee.id} coffee={coffee} />
+            <CoffeeCard key={coffee.id} coffee={coffee as Coffee} />
           ))}
         </div>
       </S.MainContent>

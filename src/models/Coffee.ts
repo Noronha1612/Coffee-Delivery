@@ -3,6 +3,7 @@ export enum CoffeeTag {
   Cold = "COLD",
   Milky = "MILKY",
   Alcoholic = "ALCOHOLIC",
+  Special = "SPECIAL",
 }
 
 export type Coffee = {
