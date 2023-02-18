@@ -8,6 +8,7 @@ import { useCart } from "@/hooks/context/cart/useCart";
 import { RouteName } from "@/routes";
 import { useLocation } from "@/hooks/utility/useLocation";
 import { Suspense } from "react";
+import { ThemeToggle } from "@/components/Input/ThemeToggle";
 
 export const ContentWrapper = () => {
   const { items } = useCart();
@@ -24,6 +25,7 @@ export const ContentWrapper = () => {
           </Link>
 
           <S.HeaderInteractables>
+            <ThemeToggle />
             {city && state && (
               <S.InteractableCard variant="secondary">
                 <MapPin weight="fill" size={20} />{" "}

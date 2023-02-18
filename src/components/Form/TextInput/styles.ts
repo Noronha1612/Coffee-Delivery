@@ -38,7 +38,7 @@ export const InputWrapper = styled.label<InputWrapperProps>`
 
   &:has(input:active),
   &:has(input:focus) {
-    border: 1px solid ${({ theme }) => theme.primaryDark};
+    border: 1px solid ${({ theme }) => theme.primaryHigh};
   }
 `;
 

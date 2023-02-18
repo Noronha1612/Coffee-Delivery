@@ -46,7 +46,7 @@ export const SummaryCard = styled.div`
 export const DeleteButton = styled(InteractableBaseComponent)`
   padding: 0.5rem;
 
-  transition: background 0.3s;
+  transition: filter 0.3s;
 
   & > span {
     display: block;
@@ -59,7 +59,7 @@ export const DeleteButton = styled(InteractableBaseComponent)`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.baseHover};
+    filter: brightness(0.9);
   }
 `;
 
@@ -110,6 +110,6 @@ export const ConfirmButton = styled.button`
   transition: background 0.3s;
 
   &:hover {
-    background: ${({ theme }) => theme.primaryDark};
+    background: ${({ theme }) => theme.primaryHover};
   }
 `;

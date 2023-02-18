@@ -1,3 +1,4 @@
+import { ThemesAvailable } from "@/hooks/context/theme/useAppTheme";
 import styled, { DefaultTheme } from "styled-components";
 
 export const Container = styled.div``;
@@ -26,6 +27,7 @@ export const Banner = styled.section`
         font-weight: 800;
         font-size: 3rem;
         line-height: 130%;
+        color: ${({ theme }) => theme.baseTitle};
       }
 
       h3 {
@@ -33,6 +35,7 @@ export const Banner = styled.section`
         font-weight: 400;
         font-size: 1.25rem;
         line-height: 130%;
+        color: ${({ theme }) => theme.baseText};
       }
 
       .bannerTags {
@@ -49,6 +52,7 @@ export const Banner = styled.section`
 
 type TagWrapperProps = {
   color: keyof DefaultTheme;
+  selectedTheme: ThemesAvailable;
 };
 
 export const TagWrapper = styled.div<TagWrapperProps>`
@@ -71,6 +75,8 @@ export const TagWrapper = styled.div<TagWrapperProps>`
 
   svg {
     margin: 0 20px 0 8px;
+    color: ${({ selectedTheme, theme }) =>
+      selectedTheme === "dark" ? theme.black : theme.white};
   }
 
   span {
@@ -84,6 +90,10 @@ export const TagWrapper = styled.div<TagWrapperProps>`
 
 export const MainContent = styled.main`
   margin: 7.5rem 0;
+
+  h2 {
+    color: ${({ theme }) => theme.baseTitle};
+  }
 
   .cardsWrapper {
     margin-top: 3.25rem;

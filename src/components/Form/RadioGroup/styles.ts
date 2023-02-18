@@ -43,6 +43,6 @@ export const RadioItem = styled.label`
 
   &:has(input:checked) {
     border: 1px solid ${({ theme }) => theme.secondary};
-    background: ${({ theme }) => theme.secondaryLight};
+    background: ${({ theme }) => theme.secondaryLow};
   }
 `;

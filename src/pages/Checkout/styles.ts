@@ -5,6 +5,11 @@ export const Container = styled.div`
   display: flex;
   gap: 2rem;
   flex: 1;
+
+  h2,
+  h4 {
+    color: ${({ theme }) => theme.baseTitle};
+  }
 `;
 
 const ContainerSection = styled.div`

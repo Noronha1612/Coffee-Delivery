@@ -1,3 +1,4 @@
+import { ThemesAvailable } from "@/hooks/context/theme/useAppTheme";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -15,7 +16,7 @@ export const Container = styled.div`
 
       margin-bottom: 0.25rem;
 
-      color: ${({ theme }) => theme.primaryDark};
+      color: ${({ theme }) => theme.primaryHigh};
     }
 
     & > h4 {
@@ -60,6 +61,7 @@ export const Content = styled.main`
 
 type ContentItemProps = {
   tagColor: string;
+  selectedTheme: ThemesAvailable;
 };
 
 export const ContentItem = styled.div<ContentItemProps>`

@@ -40,7 +40,7 @@ type InteractableCardProps = {
 const InteractableCardTag = (content: string) => css`
   &::after {
     content: "${content}";
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.primaryLow};
 
     position: absolute;
     top: 0;
@@ -50,7 +50,7 @@ const InteractableCardTag = (content: string) => css`
     height: 24px;
     width: 24px;
 
-    background-color: ${({ theme }) => theme.primaryDark};
+    background-color: ${({ theme }) => theme.primaryHigh};
     border-radius: 50%;
 
     display: flex;
@@ -66,8 +66,8 @@ export const InteractableCard = styled.span<InteractableCardProps>`
   position: relative;
   height: 100%;
 
-  color: ${({ theme, variant }) => theme[variant]};
-  background-color: ${({ theme, variant }) => theme[`${variant}Light`]};
+  color: ${({ theme, variant }) => theme[`${variant}High`]};
+  background-color: ${({ theme, variant }) => theme[`${variant}Low`]};
 
   border-radius: 8px;
   padding: 0.5rem 0.75rem;

@@ -26,7 +26,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({ control }) => {
     <form>
       <section>
         <S.SectionHeader>
-          <MapPinLine size={22} color={colors.primaryDark} />
+          <MapPinLine size={22} color={colors.primaryHigh} />
 
           <div>
             <h3>Endereço de Entrega</h3>

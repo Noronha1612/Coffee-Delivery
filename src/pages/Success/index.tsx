@@ -6,11 +6,15 @@ import SuccessLanding from "../../assets/deliveryLandingImage.svg";
 
 import * as S from "./styles";
 import { RouteName } from "@/routes";
+import { useAppTheme } from "@/hooks/context/theme/useAppTheme";
 
 export const Success = () => {
   const colors = useTheme();
+  const { theme } = useAppTheme();
   const { state } = useLocation();
   const { address, payment } = state;
+
+  const iconColor = theme === "dark" ? colors.baseCard : colors.white;
 
   if (!address || !payment) {
     return <Navigate to={RouteName.ROOT} />;
@@ -25,9 +29,9 @@ export const Success = () => {
         <h4>Agora é só aguardar que logo o café chegará até você</h4>
 
         <S.Content>
-          <S.ContentItem tagColor={colors.secondary}>
+          <S.ContentItem tagColor={colors.secondary} selectedTheme={theme}>
             <div className="iconWrapper">
-              <MapPin size={16} color={colors.white} weight="fill" />
+              <MapPin size={16} color={iconColor} weight="fill" />
             </div>
 
             <div className="tagInfoWrapper">
@@ -37,9 +41,9 @@ export const Success = () => {
               <span>{addressTwo}</span>
             </div>
           </S.ContentItem>
-          <S.ContentItem tagColor={colors.primary}>
+          <S.ContentItem tagColor={colors.primary} selectedTheme={theme}>
             <div className="iconWrapper">
-              <Timer size={16} color={colors.white} weight="fill" />
+              <Timer size={16} color={iconColor} weight="fill" />
             </div>
 
             <div className="tagInfoWrapper">
@@ -49,9 +53,9 @@ export const Success = () => {
               </span>
             </div>
           </S.ContentItem>
-          <S.ContentItem tagColor={colors.primaryDark}>
+          <S.ContentItem tagColor={colors.primaryHigh} selectedTheme={theme}>
             <div className="iconWrapper">
-              <CurrencyDollarSimple size={16} color={colors.white} />
+              <CurrencyDollarSimple size={16} color={iconColor} />
             </div>
 
             <div className="tagInfoWrapper">

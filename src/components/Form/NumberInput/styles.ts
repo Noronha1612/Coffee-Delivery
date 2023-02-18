@@ -27,7 +27,7 @@ export const QuantitySelector = styled(InteractableBaseComponent)`
       transition: color 0.1s;
 
       &:hover {
-        color: ${({ theme }) => theme.secondaryDark};
+        color: ${({ theme }) => theme.secondaryHigh};
       }
     }
   }

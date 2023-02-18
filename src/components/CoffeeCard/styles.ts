@@ -64,20 +64,21 @@ export const CardContainer = styled.div`
     }
 
     button[type="submit"] {
+      width: 38px;
       display: flex;
       justify-content: center;
       align-items: center;
 
       border: 0;
       border-radius: 6px;
-      background-color: ${({ theme }) => theme.secondaryDark};
+      background-color: ${({ theme }) => theme.secondary};
       padding: 0.5rem;
 
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: filter 0.3s;
 
       &:hover {
-        background-color: ${({ theme }) => theme.secondary};
+        filter: brightness(1.2);
       }
     }
   }
@@ -95,8 +96,8 @@ export const TagWrapper = styled.div`
 
   span {
     display: block;
-    background-color: ${({ theme }) => theme.primaryLight};
-    color: ${({ theme }) => theme.primaryDark};
+    background-color: ${({ theme }) => theme.primaryLow};
+    color: ${({ theme }) => theme.primaryHigh};
 
     padding: 0.25rem 0.5rem;
     border-radius: 100px;

@@ -11,31 +11,34 @@ import { CoffeeCard } from "../../components/CoffeeCard";
 
 import coffees from "@/data/coffees.json";
 import { Coffee } from "@/models/Coffee";
+import { useAppTheme } from "@/hooks/context/theme/useAppTheme";
 
 const tags = [
   {
-    Icon: <ShoppingCart size={16} weight="fill" color="#FFF" />,
+    Icon: <ShoppingCart size={16} weight="fill" />,
     text: "Compra simples e segura",
-    color: "primaryDark",
+    color: "primaryHigh",
   },
   {
-    Icon: <Package size={16} weight="fill" color="#FFF" />,
+    Icon: <Package size={16} weight="fill" />,
     text: "Embalagem mantém o café intacto",
     color: "baseText",
   },
   {
-    Icon: <Timer size={16} weight="fill" color="#FFF" />,
+    Icon: <Timer size={16} weight="fill" />,
     text: "Entrega rápida e rastreada",
     color: "primary",
   },
   {
-    Icon: <CoffeeIcon size={16} weight="fill" color="#FFF" />,
+    Icon: <CoffeeIcon size={16} weight="fill" />,
     text: "O café chega fresquinho até você",
     color: "secondary",
   },
 ] as const;
 
 export const Home = () => {
+  const { theme } = useAppTheme();
+
   return (
     <S.Container>
       <S.Banner>
@@ -49,7 +52,11 @@ export const Home = () => {
 
             <div className="bannerTags">
               {tags.map((tag) => (
-                <S.TagWrapper color={tag.color} key={tag.color}>
+                <S.TagWrapper
+                  selectedTheme={theme}
+                  color={tag.color}
+                  key={tag.color}
+                >
                   {tag.Icon}
 
                   <span>{tag.text}</span>
