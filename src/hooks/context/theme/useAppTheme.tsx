@@ -1,6 +1,10 @@
+import {
+  LocalStorageKey,
+  useLocalStorage,
+} from "@/hooks/utility/useLocalStorage";
 import { darkTheme } from "@/styles/themes/dark";
 import { defaultTheme } from "@/styles/themes/default";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { DefaultTheme, ThemeProvider } from "styled-components";
 
 export type ThemesAvailable = "light" | "dark";
@@ -22,7 +26,14 @@ export const AppThemeProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [theme, setTheme] = useState<AppThemeContextProps["theme"]>("light");
+  const { data, setStoreData } = useLocalStorage(LocalStorageKey.Theme);
+  const [theme, setTheme] = useState<AppThemeContextProps["theme"]>(
+    data ?? "light"
+  );
+
+  useEffect(() => {
+    setStoreData(theme);
+  }, [theme]);
 
   const toggle = () => {
     setTheme(theme === "dark" ? "light" : "dark");

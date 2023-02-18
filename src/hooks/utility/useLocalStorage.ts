@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { Cart } from "../context/cart/types";
+import { ThemesAvailable } from "../context/theme/useAppTheme";
 
 export enum LocalStorageKey {
   Cart = "@coffee-delivery/cart",
+  Theme = "@coffee-delivery/app-theme",
 }
 
 type LocalStorageContent = {
   [LocalStorageKey.Cart]: Cart;
+  [LocalStorageKey.Theme]: ThemesAvailable;
 };
 
 export function useLocalStorage<
