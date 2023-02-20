@@ -12,9 +12,10 @@ import { OutletWithItemsInCart } from "./RouteWithItemsInCart";
 export enum RouteName {
   ROOT = "/",
 
-  CART = "/",
-  CHECKOUT = "/checkout",
   SUCCESS = "/success",
+
+  CART = "/cart",
+  CHECKOUT = "/cart/checkout",
 }
 
 export const routes = createBrowserRouter(

@@ -6,7 +6,7 @@ export const OutletWithItemsInCart = () => {
   const { items } = useCart();
 
   if (!items.length) {
-    return <Navigate to={RouteName.ROOT} />;
+    return <Navigate to={RouteName.ROOT} replace />;
   }
 
   return <Outlet />;
