@@ -1,4 +1,10 @@
+import {
+  BREAKPOINT_MD,
+  BREAKPOINT_SM,
+  BREAKPOINT_XS,
+} from "./../../styles/common";
 import { ThemesAvailable } from "@/hooks/context/theme/useAppTheme";
+import { BREAKPOINT_LG } from "@/styles/common";
 import styled, { DefaultTheme } from "styled-components";
 
 export const Container = styled.div``;
@@ -7,6 +13,7 @@ export const Banner = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   margin-top: 80px;
 
@@ -15,7 +22,8 @@ export const Banner = styled.section`
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-    max-height: 360px;
+    min-height: 360px;
+    width: 100%;
 
     .textWrapper {
       display: flex;
@@ -26,7 +34,6 @@ export const Banner = styled.section`
         font-family: "Baloo 2";
         font-weight: 800;
         font-size: 3rem;
-        line-height: 130%;
         color: ${({ theme }) => theme.baseTitle};
       }
 
@@ -34,7 +41,6 @@ export const Banner = styled.section`
         font-family: "Roboto";
         font-weight: 400;
         font-size: 1.25rem;
-        line-height: 130%;
         color: ${({ theme }) => theme.baseText};
       }
 
@@ -45,6 +51,39 @@ export const Banner = styled.section`
         grid-row-gap: 1.625rem;
 
         margin-top: 3rem;
+
+        @media (max-width: ${BREAKPOINT_SM}) {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: ${BREAKPOINT_SM}) {
+        h1 {
+          font-size: 2.4rem;
+        }
+        h3 {
+          font-size: 1rem;
+        }
+      }
+      @media (max-width: ${BREAKPOINT_XS}) {
+        h1 {
+          font-size: 1.8rem;
+        }
+        h3 {
+          font-size: 0.75rem;
+        }
+      }
+    }
+
+    @media (max-width: ${BREAKPOINT_LG}) {
+      flex-direction: column-reverse;
+      padding-bottom: 1rem;
+    }
+    @media (max-width: ${BREAKPOINT_SM}) {
+      gap: 0rem;
+
+      img {
+        scale: 0.6;
       }
     }
   }
@@ -100,5 +139,19 @@ export const MainContent = styled.main`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
+
+    @media (max-width: ${BREAKPOINT_LG}) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: ${BREAKPOINT_MD}) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: ${BREAKPOINT_SM}) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  @media (max-width: ${BREAKPOINT_LG}) {
+    margin: 3rem 0;
   }
 `;

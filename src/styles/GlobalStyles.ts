@@ -1,3 +1,4 @@
+import { BREAKPOINT_MD, BREAKPOINT_SM } from "@/styles/common";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
@@ -17,8 +18,8 @@ export const GlobalStyles = createGlobalStyle`
 
   
   body {
+    min-width: 348px;
     background-color: ${({ theme }) => theme.background};
-    padding: 0 2rem;
 
     * {
       font-family: 'Roboto', sans-serif;

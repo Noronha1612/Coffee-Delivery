@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-  width: 256px;
+  min-width: 256px;
   min-height: 310px;
   border-radius: 6px 36px;
   padding: 1.25rem 1.5rem;
@@ -39,9 +39,8 @@ export const CardContainer = styled.div`
   }
 
   footer {
-    display: grid;
+    display: flex;
     margin-top: auto;
-    grid-template-columns: 1.5fr 1fr 1fr;
     gap: 0.5rem;
 
     .price {
