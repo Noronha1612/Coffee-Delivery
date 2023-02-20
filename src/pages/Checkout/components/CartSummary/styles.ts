@@ -1,9 +1,10 @@
-import { InteractableBaseComponent } from "@/styles/common";
+import { BREAKPOINT_XS, InteractableBaseComponent } from "@/styles/common";
 import styled from "styled-components";
 
 export const SummaryCard = styled.div`
   display: flex;
   gap: 1.25rem;
+  flex-wrap: wrap;
 
   position: relative;
 
@@ -18,6 +19,7 @@ export const SummaryCard = styled.div`
 
   & > .card-content {
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: space-between;
 
@@ -25,12 +27,13 @@ export const SummaryCard = styled.div`
       width: fit-content;
       display: flex;
       gap: 0.75rem;
+
+      @media (max-width: ${BREAKPOINT_XS}) {
+      }
     }
   }
 
   & > .price {
-    margin-left: auto;
-
     font-weight: 700;
     font-size: 1rem;
     line-height: 130%;

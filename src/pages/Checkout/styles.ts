@@ -1,4 +1,4 @@
-import { InteractableBaseComponent } from "@/styles/common";
+import { BREAKPOINT_MD, BREAKPOINT_XS } from "./../../styles/common";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -6,9 +6,15 @@ export const Container = styled.div`
   gap: 2rem;
   flex: 1;
 
+  padding-bottom: 2rem;
+
   h2,
   h4 {
     color: ${({ theme }) => theme.baseTitle};
+  }
+
+  @media (max-width: ${BREAKPOINT_MD}) {
+    flex-direction: column;
   }
 `;
 
@@ -74,12 +80,18 @@ export const PaymentFormContainer = styled(ContainerSection)`
     #state-container {
       grid-area: uf;
     }
+
+    @media (max-width: ${BREAKPOINT_XS}) {
+      grid-template-areas:
+        "cep cep empty empty empty empty empty "
+        "street street street street street street street "
+        "number number complement complement complement complement  complement"
+        "district district city city city uf uf";
+    }
   }
 `;
 
 export const CartSummary = styled(ContainerSection)`
-  min-width: 448px;
-
   & > section {
     border-top-right-radius: 44px;
     border-bottom-left-radius: 44px;

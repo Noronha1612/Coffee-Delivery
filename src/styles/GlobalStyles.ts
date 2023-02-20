@@ -18,7 +18,7 @@ export const GlobalStyles = createGlobalStyle`
 
   
   body {
-    min-width: 348px;
+    min-width: 380px;
     background-color: ${({ theme }) => theme.background};
 
     * {

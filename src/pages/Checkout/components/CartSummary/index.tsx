@@ -37,7 +37,6 @@ export const CartSummary: React.FC<CartSummaryProps> = ({ onConfirm }) => {
               </S.DeleteButton>
             </div>
           </div>
-
           <span className="price">{formatCurrency(item.coffee.price)}</span>
         </S.SummaryCard>
       ))}
