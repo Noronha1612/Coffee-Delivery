@@ -179,26 +179,6 @@ export const HamburgerTrigger = styled.button`
       ${HamburgerLine()}
     }
   }
-
-  &[aria-expanded="true"] {
-    margin-right: 1.125rem;
-  }
-
-  &[aria-expanded="true"] .hamburger-trigger-icon {
-    background: transparent;
-
-    &:before {
-      transform: rotate(45deg);
-      top: 0;
-      transition: all 0.2s;
-    }
-
-    &:after {
-      transform: rotate(-45deg);
-      bottom: 0;
-      transition: all 0.2s;
-    }
-  }
 `;
 
 export const CartItem = styled(Link)`

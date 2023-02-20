@@ -1,4 +1,5 @@
 import { ThemesAvailable } from "@/hooks/context/theme/useAppTheme";
+import { BREAKPOINT_MD, BREAKPOINT_SM, BREAKPOINT_XS } from "@/styles/common";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -7,6 +8,22 @@ export const Container = styled.div`
   align-items: flex-end;
 
   margin-top: 12rem;
+
+  @media (max-width: ${BREAKPOINT_MD}) {
+    flex-direction: column-reverse;
+    gap: 1rem;
+    align-items: center;
+  }
+  @media (max-width: ${BREAKPOINT_SM}) {
+    img {
+      scale: 0.75;
+    }
+  }
+  @media (max-width: ${BREAKPOINT_XS}) {
+    img {
+      scale: 0.55;
+    }
+  }
 
   & > div {
     & > h1 {

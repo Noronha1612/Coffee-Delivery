@@ -1,4 +1,3 @@
-import { BREAKPOINT_MD, BREAKPOINT_SM } from "@/styles/common";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
