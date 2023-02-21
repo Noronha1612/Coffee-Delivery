@@ -45,14 +45,16 @@ export const DropdownMenu = () => {
               </S.CartItem>
             </Dropdown.Item>
 
-            <Dropdown.Item asChild>
-              <S.LocationItem className="drop-item">
-                <MapPin weight="fill" size={16} />{" "}
-                <span>
-                  {city}, {state}
-                </span>
-              </S.LocationItem>
-            </Dropdown.Item>
+            {city && state && (
+              <Dropdown.Item asChild>
+                <S.LocationItem className="drop-item">
+                  <MapPin weight="fill" size={16} />{" "}
+                  <span>
+                    {city}, {state}
+                  </span>
+                </S.LocationItem>
+              </Dropdown.Item>
+            )}
           </S.DropdownContainer>
         </Dropdown.Content>
       </Dropdown.Portal>
