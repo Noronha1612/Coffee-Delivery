@@ -20,6 +20,7 @@ export const Container = styled.div`
     }
   }
   @media (max-width: ${BREAKPOINT_XS}) {
+    margin-top: 4rem;
     img {
       scale: 0.55;
     }
